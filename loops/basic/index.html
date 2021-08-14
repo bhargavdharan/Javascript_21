@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Loops</title>
+</head>
+<body>
+    <h1>Javascript For loop</h1><p id="demo"></p>
+    <br>
+    <h1>Javascript While loop</h1><p id="demo1"></p>
+    <br>
+    <h1>Javascript Do-While loop</h1><p id="demo2"></p>
+
+    <script>
+        // let n;
+        // document.write("The numbers are: " + "<br>");
+
+        // for(n=0; n<10; n++)
+        // {
+        //     document.write(n + " ");
+        // }
+
+        let y;
+        for(y=0; y<10; y++){
+            console.log(y);
+            document.getElementById('demo').innerHTML = y + "";
+        }
+
+        let x=1;
+        while(x<=5)
+        {
+            console.log(x);
+            x++;
+            document.getElementById('demo1').innerHTML = x;
+        }
+
+        let z=1;
+        do{
+            // document.getElementById('demo3').innerHTML = z;
+            console.log(z);
+            z++;
+        }
+        while(z<10)
+
+        let a ;
+        for( a =1; a <= 10; a++)
+        {
+            // document.write(a + "is the current number" + "<br>");
+            console.log(a);
+            if(a==5){
+                break;
+            }
+        }
+
+        let b;
+        for(b=1; b<=10; b++)
+        {
+            if(b==3){
+                continue;
+            }
+            console.log(b);
+        }
+
+
+
+
+    </script>
+
+    <!-- <script>
+        document.write("<br><br>");
+        let x = [2,4,6,8,10,12,14];
+        for(i=0,len = x.length, sum=0; i<len; i++)
+        {
+            sum = sum + x[i];
+            document.write("The sum is :" + sum);
+        }
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Objects</title>
+</head>
+<body>
+    <h1>Creating JS Objects</h1>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+    <p id="demo5"></p>
+    <script>
+        var student = {
+            name: "Chris",
+            age: 21,
+            studies: "Computer Science",
+            Nationality: "America",
+        };
+        document.getElementById('demo').innerHTML = student.name + " of the age " + student.age + " studies " + student.studies + " in " + student.Nationality;
+        console.log(student);
+
+        var student1 = new Object();
+        student1.name = "Mike",
+        student1.age = 21,
+        student1.studies = "Computer science",
+        student1.Nationality = "London"
+        document.getElementById('demo1').innerHTML = student1.name + " of the age " + student1.age + " studies " + student1.studies + " in " + student1.Nationality;
+
+        function stud(name,age,studies,Nationality){
+            this.name = name;
+            this.age = age;
+            this.studies = studies;
+            this.Nationality = Nationality;
+        }
+        var student2 = new stud("Ram",21,"Computer science","NewZealand")
+        document.getElementById('demo2').innerHTML = student2.name+ " of the age " + student2.age + " studies " + student2.studies + " in " + student2.Nationality;
+        console.log(student2);
+    </script>
+</body>
+</html>
