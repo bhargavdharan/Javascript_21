@@ -1,0 +1,48 @@
+body{
+    background-color: teal;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+}
+h1{
+    color: white;
+    text-align: left;
+    padding-left: 300px;
+    font-size:50px;
+    font-family: cursive;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+div{
+    box-sizing: border-box;
+    background-color: bisque;
+    text-align: center;
+    margin: 165px;
+    padding: 85px;
+    border: 5px solid black;
+    border-radius: 15px;
+    width: 850px;
+}
+
+input{
+    background-color: yellow;
+    margin: 20px;
+    width: 200px;
+    line-height: 3;
+    border-radius: 10px;
+
+}
+
+input:hover{
+    background-color: whitesmoke;
+    color: red;
+}
+
+button:hover{
+    line-height: 2;
+    border-radius: 20px;
+    background-color: green;
+    color: white;
+
+}
