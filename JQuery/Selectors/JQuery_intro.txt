@@ -1,0 +1,14 @@
+----------what is JQuery?-----------
+
+==>  JQuery is a small , fast and feature-rich javascript library.
+==>  JQuery makes things like DOM manipulation,even handling and AJAX much easier
+==>  Much less code.
+
+=====concepts we can learn here=======
+
+* Selectors
+* Events
+* DOM manipulation
+* Methods
+* Effects & Animation
+* AJAX

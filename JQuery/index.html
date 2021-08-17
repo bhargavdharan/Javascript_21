@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Drag the image into the rectangle</p>
+    <div id="div1"
+    style = "width:350px; height:100px; padding:10px; border: 2px solid black;"
+    ondrop="drop(event)"
+    ondragOver="allowDrop(event)"
+    ></div>
+    <img id="drag1" src="ironman.jpg" alt="error" draggable="true"
+    ondragstart="drag(event)">
+    <script>
+        function allowDrop(e){
+            e.preventDefault();
+        }
+        function drag(e){
+            e.dataTransfer.setData("index/html",e.target.id);
+        }
+        function drop(e){
+            e.preventDefault();
+            var data = e.dataTransfer.getData("index/html");
+            e.dataTransfer(document.getElementById(data));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Crash Course</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js "></script>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: monospace;
+            background: #f4f4f4;
+            line-height: 1.5em;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid #000;
+            margin-bottom: 10px;
+        }
+
+        #container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+        #box{
+            background:#333;
+            color: #fff;
+            height:90px;
+            width:500px;
+            padding:40px;
+            text-decoration:center;
+        }
+        #box2{
+            background:red;
+            color: #fff;
+            text-decoration: center;
+            width:150px;
+            height:140px;
+            position:relative;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>jQuery crash Course | Effects & Animation</h1>
+    </header>
+
+    <div id="container">
+        <button id="btnFadeOut">Fade Out</button>
+        <button id="btnFadeIn">Fade In</button>
+        <button id="btnFadeTog">Fade Toggle</button>
+
+        <hr>
+
+        <button id="btnSlideUp">Slide Up</button>
+        <button id="btnSlideDown">Slide Down</button>
+        <button id="btnSlideTog">Slide Toggle</button>
+        <button id="btnStop">Stop</button>
+
+        <hr>
+
+        <div id="box"><h1>Hello Dharan! </h1></div>
+
+        <hr>
+
+        <button id="moveLeft">Move Left</button>
+        <button id="moveRight">Move Right</button>
+        <button id="moveAround">Move Around</button>
+
+        <div id="box2">Welcome to our space!</div>
+
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('#btnFadeOut').click(function(){
+                $('#box').fadeOut(3000,function(){
+                    $('#btnFadeOut').text('Its Gone');
+                });
+             });
+
+            $('#btnFadeIn').click(function(){
+                $('#box').fadeIn(3000,function(){
+                    $('#btnFadeIn').text('Its Appear');
+                });
+             });
+
+            $('#btnFadeTog').click(function(){
+                $('#box').fadeToggle(3000,function(){
+                    $('#btnFadeTog').text('It works');
+                });
+             });
+
+            $('#btnSlideDown').click(function(){
+                $('#box').slideDown(3000,function(){
+                    $('#btnSlideDown').text('it slides down');
+                });
+             });
+            $('#btnSlideUp').click(function(){
+                $('#box').slideUp(3000,function(){
+                    $('#btnSlideUp').text('it slides up');
+                });
+             });
+            $('#btnSlideTog').click(function(){
+                $('#box').slideToggle(3000,function(){
+                    $('#btnSlideTog').text('Slide switch');
+                });
+             });
+             $('#btnStop').click(function(){
+                 $('#box').stop();
+             });
+
+
+             $('#moveRight').click(function(){
+                    $('#box2').animate({
+                        left:500,
+                        height:'300px',
+                        width:'300px',
+                        opacity:0.5
+                    })
+             });
+             $('#moveLeft').click(function(){
+                    $('#box2').animate({
+                        left:0,
+                        height:'100px',
+                        width: '100px',
+                        opacity:1
+                    })
+             });
+             $('#moveAround').click(function(){
+                    var box = $('#box2');
+                    box.animate({
+                        left:300
+                    });
+                    box.animate({
+                        top:300
+                    });
+                    box.animate({
+                        left:0,
+                        top:300
+                    });
+                    box.animate({
+                        left:0,
+                        top:0
+                    });
+             });
+        });
+
+    </script>
+</body>
+</html>

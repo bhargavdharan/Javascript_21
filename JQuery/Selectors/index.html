@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery Crash Course | selectors</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js "></script>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: monospace;
+            background: #f4f4f4;
+            line-height: 1.5em;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid #000;
+            margin-bottom: 10px;
+        }
+
+        #container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>jQuery crash Course</h1>
+    </header>
+
+    <div id="container">
+
+        <h1 id="heading1"> Heading One </h1>
+
+        <p id="para1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima suscipit, <span>Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Ab fugit alias cupiditate quos, velit dolorum.</span>beatae
+            voluptatibus earum voluptatem in distinctio quod rem ullam laboriosam neque, numquam perferendis, tempore
+            eos error ab eum sint fugiat sed! Suscipit et blanditiis alias beatae dolor eius, magnam minima. Quo odio
+            <span>Lorem, ipsum dolor.</span>ducimus beatae suscipit molestiae. Corrupti sit deserunt pariatur. </p>
+
+        <h1 class="heading2"> Heading Two </h1>
+
+        <p class="para2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima suscipit, <span>Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Ab fugit alias cupiditate quos, velit dolorum.</span>beatae
+            voluptatibus <span>Lorem, ipsum dolor.</span>earum voluptatem in distinctio quod rem ullam laboriosam neque, numquam perferendis, tempore
+            eos error ab eum sint fugiat sed! Suscipit et blanditiis alias beatae dolor eius, magnam minima. Quo odio
+            ducimus beatae suscipit molestiae. Corrupti sit deserunt pariatur. </p>
+
+            <ul id="list">
+                <li>List items</li>
+                <li>List items</li>
+                <li>List items</li>
+                <li>List items</li>
+                <li>List items</li>
+                <li>List items</li>
+            </ul>
+
+            <input type="button" value="Button 1">
+            <input type="submit" value="Button 2">
+            <input type="text" >
+
+            <a href="http://google.com">Google</a>
+            <a href="http://yahoo.com">Yahoo</a>
+        </div>
+
+
+    <script>
+
+        // $('h1').hide();
+        // $('h1#heading1').hide();
+        // $('h1.heading2').hide();
+
+        $('p span').css('color','red');
+        $('ul#list li:first').css('color','green');
+        $('ul#list li:last').css('color','red');
+        $('ul#list li:even').css('background-color','yellow');
+        $('ul#list li:odd').css('background-color','#cccc');
+        $('ul#list li:nth-child(3n)').css('list-style','none');
+
+        $(':button').hide();
+        $(':text').hide();
+        $('[href]').css('color','red');
+        $('a[href="http://yahoo.com"]').css('color','green');
+
+
+    </script>
+
+</body>
+
+</html>
