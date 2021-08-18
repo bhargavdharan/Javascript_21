@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Data structures</title>
+    <style>
+        body{
+            margin: 50px;
+            padding: 20px;
+            border: 10px solid black;
+        }
+
+        h1{
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            background-color: rgb(197, 197, 17);
+        }
+
+        h2{
+            font-size: 40px;
+            font-weight: bold;
+            color: black;
+            background-color:rgb(132, 223, 132);
+        }
+        p{
+            font-size: 20px;
+            font-style: cursive;
+            background-color:rgb(146, 146, 250);
+        }
+        ul li, ul li{
+            list-style: none;
+            background-color: rgb(247, 209, 139);
+        }
+        ul li:hover{
+            list-style: none;
+            background-color: yellowgreen;
+            font-size: 44px;
+        }
+
+        #differences{
+            box-sizing: border-box;
+            background-color: rgba(20,20,20,0.5)
+        }
+        #block1{
+            float: left;
+            justify-content: left;
+        }
+        #block2{
+            display: relative;
+            justify-content: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Data structures || JS</h1>
+    <h2>JS has been used more and more as a server-side computer programming language.</h2>
+    <h2>Data structures is systematic way to organize data in order to use it efficiently.</h2>
+    <h2>In this file i focus on implementation of data structures with javascript.</h2>
+
+    <div id="intro">
+        <h1>What are "Data structures"?</h1>
+        <p><b>Data Structures allow you to manage data.</b></p>
+        <p>Ex: Arrays, Objects, Maps, Sets...</p>
+        <p>
+            Arrays: [1,2,3] <br>
+            objects: { name: 'Max', age: 31 } <br>
+            Maps: new Map() map.set('a','b') <br>
+            Sets: new Set() set.add(1)
+        </p>
+
+        <h1>Different Tasks Require Different Data Structures.</h1>
+        <p>
+            <ul>
+                <li>Ordered List of Data, Duplicates Allowed.
+                    <ul>
+                        <li>Array</li>
+                        <span>[1,2,5,3]</span>
+                    </ul>
+                </li>
+                <li>Unordered List of Data, No Duplicates wanted.
+                    <ul>
+                        <li>Set</li>
+                        <span>
+                            new Set() <br>
+                            set.add('pizza')
+                        </span>
+                    </ul>
+                </li>
+                <li>Key-value Pairs of unordered Data.
+                    <ul>
+                        <li>Object</li>
+                        <span>
+                            {name: 'Max',age:31}
+                        </span>
+                    </ul>
+                </li>
+                <li>Key-value pairs of ordered, iterable Data.
+                    <ul>
+                        <li>Map</li>
+                        <span>
+                            new Map() <br>
+                            map.set('local','Germany')
+                        </span>
+                    </ul>
+                </li>
+            </ul>
+        </p>
+    </div>
+
+    <div id="Arrays">
+        <h1>Arrays</h1>
+        <h2>[1,3,6,2]</h2>
+        <ul>
+            <li>Insertion order is kept.</li>
+            <li>Element access vis index.</li>
+            <li>Iterable (= you can use the for-of loop).</li>
+            <li>Size(length) adjusts dynamically.</li>
+            <li>Duplicate values are allowed.</li>
+            <li>Deletion and finding elements can require "extra work".</li>
+        </ul>
+    </div>
+
+    <div id="sets">
+        <h1>Sets</h1>
+        <h2>Sets ia all about lists of data.</h2>
+        <h2> new set () <br>
+            set.add('Pizza') <br>
+            set.add('burger') <br>
+            set.add('Pizza') // not added
+        </h2>
+        <ul>
+            <li>Insertion Order is not stored/ memorized.</li>
+            <li>Element access and extraction via method.</li>
+            <li>Iterable (= you can use the for-of loop).</li>
+            <li>Size(length) adjusts dynamically.</li>
+            <li>Duplicate values are not allowed(i.e. unique values only)</li>
+            <li>Deletion and finding elements is trivial and fast.</li>
+        </ul>
+    </div>
+
+    <div id="differences">
+        <header id="block1">
+            <p><b>Arrays</b></p><br>
+            <p><i>You can always use arrays</i></p>
+            <p><i>Must-use if order matters and/or duplicates are wanted.</i></p>
+        </header id="block2">
+            <p><b>Sets</b></p><br>
+            <p><i>Only usable if order does not matter and you only need unique values.</i></p>
+            <p><i>Can simplify data access (finding,deletion) compared to arrays.</i></p>
+        </header>
+    </div>
+
+    <div id="objects">
+        <h1> Objects </h1>
+        <h2>
+            {
+                name: 'Max', age: 31, <br>
+                greet(){<br>
+                    console.log('Hi, I am ' +this.name);<br>
+                }
+            }
+        </h2>
+        <ul>
+            <li>Unordered key-value pairs of data.</li>
+            <li>Element access via key (property name)</li>
+            <li>Not iterable (only with for-in)</li>
+            <li>Keys are unique, values are not.</li>
+            <li>Keys have to be strings, numbers or symbols</li>
+            <li>Can store data & "functionality" (methods) </li>
+        </ul>
+
+    </div>
+</body>
+</html>
