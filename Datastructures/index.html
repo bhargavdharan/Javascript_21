@@ -31,13 +31,18 @@
             background-color:rgb(146, 146, 250);
         }
         ul li, ul li{
-            list-style: none;
+            list-style: number;
             background-color: rgb(247, 209, 139);
+            font-size: 40px;
         }
         ul li:hover{
             list-style: none;
             background-color: yellowgreen;
             font-size: 44px;
+            border:4px solid black;
+            border-radius: 6px;
+            margin: 10px;
+            padding: 10px;
         }
 
         #differences{
@@ -171,7 +176,28 @@
             <li>Keys have to be strings, numbers or symbols</li>
             <li>Can store data & "functionality" (methods) </li>
         </ul>
+    </div>
 
+    <div id="Map">
+        <h1>Maps</h1>
+        <h2>
+            new Map() <br>
+            map.set('name','Max') <br>
+            map.set(true,tru) //Boolean Key <br>
+        </h2>
+        <ul>
+            <li>Ordered key-value pairs of data.</li>
+            <li>Element access via Key.</li>
+            <li>Iterable (=you can use the for-of loop).</li>
+            <li>Keys are unique,values are not.</li>
+            <li>Keys can be anything (incl, reference values like arrays).</li>
+            <li>Pure data storage, optimized for data access</li>
+        </ul>
+    </div>
+
+    <div id="Ws and Wm">
+        <h1>WeakSet & WeakMap</h1>
+        <h2> Variation of Set and Map</h2>
     </div>
 </body>
 </html>
