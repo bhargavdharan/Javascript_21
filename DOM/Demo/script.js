@@ -26,6 +26,7 @@ document.addEventListener(('DOMContentLoaded'),function(){
 
     //creating elements
     const value = addForm.querySelector('input[text="text"]').value;
+    const t = document.createTextNode(value)
     const li = document.createElement('li');
     const movieName = document.createElement('span');
     const deleteBtn = document.createElement('span');
@@ -40,6 +41,7 @@ document.addEventListener(('DOMContentLoaded'),function(){
      deleteBtn.classList.add('delete');
 
     //append to DOM
+    li.appendChild(t);
       li.appendChild(movieName);
       li.appendChild(deleteBtn);
       list.appendChild(li);
