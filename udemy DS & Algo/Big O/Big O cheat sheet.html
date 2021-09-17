@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://www.bigocheatsheet.com/ -->
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Big-O Algorithm Complexity Cheat Sheet (Know Thy Complexities!) @ericdrowell</title>
+
+  <link href="./Big O cheat sheet_files/normalize.min.css" rel="stylesheet">
+  <link href="./Big O cheat sheet_files/main.css" rel="stylesheet">
+  <script async="" src="./Big O cheat sheet_files/get_counts"></script>
+  <script src="./Big O cheat sheet_files/osd.js"></script>
+  <script src="./Big O cheat sheet_files/f(4).txt"></script>
+  <script type="text/javascript" async="" src="./Big O cheat sheet_files/ga.js"></script>
+  <script async="" src="./Big O cheat sheet_files/5a572c8960405000131c1b9a.js"></script>
+  <script src="./Big O cheat sheet_files/f(5).txt" id="google_shimpl"></script>
+  <script type="text/javascript" async="" src="./Big O cheat sheet_files/embed.js"></script>
+  <meta http-equiv="origin-trial"
+    content="A88otRz1Fd3Nt567e2IYshC18LL3KGVXpVJW9oTCId4RYaygt23pbb4JqrbdIO/bwZPWEmRjBIRBu/bZbDR7Pg4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
+  <meta http-equiv="origin-trial"
+    content="A0gCLbXCcL0R1Oc8tFPDs0G4Elz17w3zHp+Zst66+D17veE2o7fUcPsA114QtSTRqfVJLMeTSdeWOom0CcyCsgYAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="A9RQ+LxFazAousxUwSCzaihJjHLO1UyjQp0teZKHl7WdbVjPDfHSKMd6D/ZI5MTjqClFycbl70EFd7cBJWXqKQEAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="A6WKeWsdn1Ct+ZPqS9NCxxaiBoQ7wdTkK2/gE69Yu0gfBKJfo1gOvgkGmf5/xaIajT/RUb9AbnF1FsSZ47cCcQcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="A04ZCu7yjrHgwQJK5ISHhH1DSg0qqowEay3n70KO6wV3D2Mj+OX3Kw20aSMitzgdG1xfrN7sOJV/dZIk+RvCzA4AAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
+  <meta http-equiv="origin-trial"
+    content="A2YAd4xOntTGygIDjApOTtXOgVI3IWsd5OnOGq3RbRkIQwyqYWNl1JGRAcvtm6VOHDj4n07T/J19VqLuJn3MmQ8AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
+  <meta http-equiv="origin-trial"
+    content="A2c5Ux+hivdkLh/KbZUGr6f7SCR0mZrBVfPJ+/OuDVHNwiYv+Lo83b9z5qL8sod78bQl0pSLtbvRWURo+xRl7AIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
+  <meta http-equiv="origin-trial"
+    content="AzNJ4sd3tVurolpdvWYZ4cmP9Po7RJhEHSqmC3pgxW9fFVZvchhtcMUgHAs97npxMD1jhXHO8s6q6Wy1MMLxKgEAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
+  <meta http-equiv="origin-trial"
+    content="AwfG8hAcHnPa/kJ1Co0EvG/K0F9l1s2JZGiDLt2mhC3QI5Fh4qmsmSwrWObZFbRC9ieDaSLU6lHRxhGUF/i9sgoAAACBeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="AwQ7dCmHkvR6FuOFxAuNnktYSQrGbL4dF+eBkrwNLALc69Wr//PnO1yzns3pjUoCaYbKHtVcnng2hU+8OUm0PAYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="AysVDPGQTLD/Scn78x4mLwB1tMfje5jwUpAAzGRpWsr1NzoN7MTFhT3ClmImi2svDZA7V6nWGIV8YTPsSRTe0wYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="A88otRz1Fd3Nt567e2IYshC18LL3KGVXpVJW9oTCId4RYaygt23pbb4JqrbdIO/bwZPWEmRjBIRBu/bZbDR7Pg4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
+  <meta http-equiv="origin-trial"
+    content="A0gCLbXCcL0R1Oc8tFPDs0G4Elz17w3zHp+Zst66+D17veE2o7fUcPsA114QtSTRqfVJLMeTSdeWOom0CcyCsgYAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="A9RQ+LxFazAousxUwSCzaihJjHLO1UyjQp0teZKHl7WdbVjPDfHSKMd6D/ZI5MTjqClFycbl70EFd7cBJWXqKQEAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="A6WKeWsdn1Ct+ZPqS9NCxxaiBoQ7wdTkK2/gE69Yu0gfBKJfo1gOvgkGmf5/xaIajT/RUb9AbnF1FsSZ47cCcQcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="A04ZCu7yjrHgwQJK5ISHhH1DSg0qqowEay3n70KO6wV3D2Mj+OX3Kw20aSMitzgdG1xfrN7sOJV/dZIk+RvCzA4AAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
+  <meta http-equiv="origin-trial"
+    content="A2YAd4xOntTGygIDjApOTtXOgVI3IWsd5OnOGq3RbRkIQwyqYWNl1JGRAcvtm6VOHDj4n07T/J19VqLuJn3MmQ8AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
+  <meta http-equiv="origin-trial"
+    content="A2c5Ux+hivdkLh/KbZUGr6f7SCR0mZrBVfPJ+/OuDVHNwiYv+Lo83b9z5qL8sod78bQl0pSLtbvRWURo+xRl7AIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
+  <meta http-equiv="origin-trial"
+    content="AzNJ4sd3tVurolpdvWYZ4cmP9Po7RJhEHSqmC3pgxW9fFVZvchhtcMUgHAs97npxMD1jhXHO8s6q6Wy1MMLxKgEAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
+  <meta http-equiv="origin-trial"
+    content="AwfG8hAcHnPa/kJ1Co0EvG/K0F9l1s2JZGiDLt2mhC3QI5Fh4qmsmSwrWObZFbRC9ieDaSLU6lHRxhGUF/i9sgoAAACBeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="AwQ7dCmHkvR6FuOFxAuNnktYSQrGbL4dF+eBkrwNLALc69Wr//PnO1yzns3pjUoCaYbKHtVcnng2hU+8OUm0PAYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="AysVDPGQTLD/Scn78x4mLwB1tMfje5jwUpAAzGRpWsr1NzoN7MTFhT3ClmImi2svDZA7V6nWGIV8YTPsSRTe0wYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="A88otRz1Fd3Nt567e2IYshC18LL3KGVXpVJW9oTCId4RYaygt23pbb4JqrbdIO/bwZPWEmRjBIRBu/bZbDR7Pg4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
+  <meta http-equiv="origin-trial"
+    content="A0gCLbXCcL0R1Oc8tFPDs0G4Elz17w3zHp+Zst66+D17veE2o7fUcPsA114QtSTRqfVJLMeTSdeWOom0CcyCsgYAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="A9RQ+LxFazAousxUwSCzaihJjHLO1UyjQp0teZKHl7WdbVjPDfHSKMd6D/ZI5MTjqClFycbl70EFd7cBJWXqKQEAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="A6WKeWsdn1Ct+ZPqS9NCxxaiBoQ7wdTkK2/gE69Yu0gfBKJfo1gOvgkGmf5/xaIajT/RUb9AbnF1FsSZ47cCcQcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="A04ZCu7yjrHgwQJK5ISHhH1DSg0qqowEay3n70KO6wV3D2Mj+OX3Kw20aSMitzgdG1xfrN7sOJV/dZIk+RvCzA4AAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
+  <meta http-equiv="origin-trial"
+    content="A2YAd4xOntTGygIDjApOTtXOgVI3IWsd5OnOGq3RbRkIQwyqYWNl1JGRAcvtm6VOHDj4n07T/J19VqLuJn3MmQ8AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
+  <meta http-equiv="origin-trial"
+    content="A2c5Ux+hivdkLh/KbZUGr6f7SCR0mZrBVfPJ+/OuDVHNwiYv+Lo83b9z5qL8sod78bQl0pSLtbvRWURo+xRl7AIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
+  <meta http-equiv="origin-trial"
+    content="AzNJ4sd3tVurolpdvWYZ4cmP9Po7RJhEHSqmC3pgxW9fFVZvchhtcMUgHAs97npxMD1jhXHO8s6q6Wy1MMLxKgEAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
+  <meta http-equiv="origin-trial"
+    content="AwfG8hAcHnPa/kJ1Co0EvG/K0F9l1s2JZGiDLt2mhC3QI5Fh4qmsmSwrWObZFbRC9ieDaSLU6lHRxhGUF/i9sgoAAACBeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="AwQ7dCmHkvR6FuOFxAuNnktYSQrGbL4dF+eBkrwNLALc69Wr//PnO1yzns3pjUoCaYbKHtVcnng2hU+8OUm0PAYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <meta http-equiv="origin-trial"
+    content="AysVDPGQTLD/Scn78x4mLwB1tMfje5jwUpAAzGRpWsr1NzoN7MTFhT3ClmImi2svDZA7V6nWGIV8YTPsSRTe0wYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+  <link rel="preload" href="./Big O cheat sheet_files/f(6).txt" as="script">
+  <script type="text/javascript" src="./Big O cheat sheet_files/f(6).txt"></script>
+  <link rel="preload" href="./Big O cheat sheet_files/f(7).txt" as="script">
+  <script type="text/javascript" src="./Big O cheat sheet_files/f(7).txt"></script>
+  <link rel="prefetch" as="style"
+    href="https://c.disquscdn.com/next/embed/styles/lounge.aa6d56595a43bd5e887186df12931c03.css">
+  <link rel="prefetch" as="script"
+    href="https://c.disquscdn.com/next/embed/common.bundle.ee2555081038338ea4f41cbb3ea1bc17.js">
+  <link rel="prefetch" as="script"
+    href="https://c.disquscdn.com/next/embed/lounge.bundle.a394e8c4e3eaa98fc6ab1dfa2e322bd4.js">
+  <link rel="prefetch" as="script" href="https://disqus.com/next/config.js">
+  <style type="text/css">
+    #st-1 {
+      font-family: "Helvetica Neue", Verdana, Helvetica, Arial, sans-serif;
+      ;
+      direction: ltr;
+      display: block;
+      opacity: 1;
+      text-align: center;
+      z-index: 94034;
+    }
+
+    #st-1.st-animated {
+      -moz-transition: o 0.2s ease-in, p 0.2s ease-in, a 0.2s ease-in, c 0.2s ease-in, i 0.2s ease-in, t 0.2s ease-in, y 0.2s ease-in;
+      -ms-transition: o 0.2s ease-in, p 0.2s ease-in, a 0.2s ease-in, c 0.2s ease-in, i 0.2s ease-in, t 0.2s ease-in, y 0.2s ease-in;
+      -o-transition: o 0.2s ease-in, p 0.2s ease-in, a 0.2s ease-in, c 0.2s ease-in, i 0.2s ease-in, t 0.2s ease-in, y 0.2s ease-in;
+      -webkit-transition: o 0.2s ease-in, p 0.2s ease-in, a 0.2s ease-in, c 0.2s ease-in, i 0.2s ease-in, t 0.2s ease-in, y 0.2s ease-in;
+      transition: o 0.2s ease-in, p 0.2s ease-in, a 0.2s ease-in, c 0.2s ease-in, i 0.2s ease-in, t 0.2s ease-in, y 0.2s ease-in;
+    }
+
+    #st-1.st-hidden {
+      opacity: 0;
+    }
+
+    #st-1.st-hide {
+      display: none;
+    }
+
+    #st-1 .st-btn {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      -moz-transition: opacity 0.2s ease-in, top 0.2s ease-in;
+      -ms-transition: opacity 0.2s ease-in, top 0.2s ease-in;
+      -o-transition: opacity 0.2s ease-in, top 0.2s ease-in;
+      -webkit-transition: opacity 0.2s ease-in, top 0.2s ease-in;
+      transition: opacity 0.2s ease-in, top 0.2s ease-in;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 12px;
+      height: 32px;
+      line-height: 32px;
+      margin-right: 8px;
+      padding: 0 10px;
+      position: relative;
+      text-align: center;
+      top: 0;
+      vertical-align: top;
+      white-space: nowrap;
+    }
+
+    #st-1 .st-btn:last-child {
+      margin-right: 0;
+    }
+
+    #st-1 .st-btn>svg {
+      height: 16px;
+      width: 16px;
+      position: relative;
+      top: 8px;
+      vertical-align: top;
+    }
+
+    #st-1 .st-btn>img {
+      display: inline-block;
+      height: 16px;
+      width: 16px;
+      position: relative;
+      top: 8px;
+      vertical-align: top;
+    }
+
+    #st-1 .st-btn>span {
+      -moz-transition: all 0.2s ease-in;
+      -ms-transition: all 0.2s ease-in;
+      -o-transition: all 0.2s ease-in;
+      -webkit-transition: all 0.2s ease-in;
+      transition: all 0.2s ease-in;
+      color: #fff;
+      display: inline-block;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      min-width: 60px;
+      opacity: 1;
+      padding: 0 6px;
+      position: relative;
+      vertical-align: top;
+    }
+
+    #st-1.st-has-labels .st-btn {
+      min-width: 120px;
+    }
+
+    #st-1.st-has-labels .st-btn.st-remove-label {
+      min-width: 50px;
+    }
+
+    #st-1.st-has-labels .st-btn.st-remove-label>span {
+      display: none;
+    }
+
+    #st-1.st-has-labels .st-btn.st-hide-label>span {
+      display: none;
+    }
+
+    #st-1 .st-total {
+      color: #555;
+      display: inline-block;
+      font-weight: 500;
+      line-height: 12px;
+      margin-right: 0;
+      max-width: 80px;
+      padding: 4px 8px;
+      text-align: center;
+    }
+
+    #st-1 .st-total.st-hidden {
+      display: none;
+    }
+
+    #st-1 .st-total>span {
+      font-size: 16px;
+      line-height: 17px;
+      display: block;
+      padding: 0;
+    }
+
+    #st-1 .st-total>span.st-shares {
+      font-size: 9px;
+      line-height: 9px;
+    }
+
+    #st-1.st-justified {
+      display: flex;
+      text-align: center;
+    }
+
+    #st-1.st-justified .st-btn {
+      -moz-flex: 1;
+      -ms-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+    }
+
+    #st-1 .st-btn:hover {
+      opacity: .8;
+      top: -4px;
+    }
+
+    #st-1 .st-btn[data-network='twitter'] {
+      background-color: #55acee
+    }
+
+    #st-1 .st-btn[data-network='twitter'] img {
+      filter:
+    }
+
+    #st-1 .st-btn[data-network='twitter']>span {
+      color: #fff
+    }
+
+    #st-1 .st-btn[data-network='reddit'] {
+      background-color: #ff4500
+    }
+
+    #st-1 .st-btn[data-network='reddit'] img {
+      filter:
+    }
+
+    #st-1 .st-btn[data-network='reddit']>span {
+      color: #fff
+    }
+
+    #st-1 .st-btn[data-network='facebook'] {
+      background-color: #4267B2
+    }
+
+    #st-1 .st-btn[data-network='facebook'] img {
+      filter:
+    }
+
+    #st-1 .st-btn[data-network='facebook']>span {
+      color: #fff
+    }
+
+    #st-1 .st-btn[data-network='linkedin'] {
+      background-color: #0077b5
+    }
+
+    #st-1 .st-btn[data-network='linkedin'] img {
+      filter:
+    }
+
+    #st-1 .st-btn[data-network='linkedin']>span {
+      color: #fff
+    }
+
+    #st-1 .st-btn[data-network='snapchat']>span {
+      color: #333
+    }
+
+    ;
+    }
+  </style>
+  <script src="./Big O cheat sheet_files/alfie_v4.63f1ab6d6b9d5807dc0c94ef3fe0b851.js" async=""
+    charset="UTF-8"></script>
+  <script type="text/javascript" src="./Big O cheat sheet_files/cmTagCUSTOM.js"></script>
+  <link type="text/css" rel="stylesheet" href="./Big O cheat sheet_files/cmOsUnit.css">
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1028.0" data-gr-ext-installed="">
+  <div id="header">
+    <a id="logo" href="https://www.bigocheatsheet.com/">Big-O Cheat Sheet</a>
+    <a id="download" href="https://www.bigocheatsheet.com/pdf/big-o-cheatsheet.pdf"
+      download="big-o-cheatsheet.pdf">Download PDF</a>
+  </div>
+
+  <div id="page">
+    <div class="google-ad">
+      <script async="" src="./Big O cheat sheet_files/f(8).txt"></script>
+      <!-- BigO Header -->
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-8154832549041429" data-ad-slot="1064631020" data-adsbygoogle-status="done"
+        data-ad-status="filled"><ins id="aswift_0_expand"
+          style="border: none; height: 90px; width: 728px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"
+          tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_0_anchor"
+            style="border: none; height: 90px; width: 728px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"><iframe
+              id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:728px;height:90px;"
+              sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+              width="728" height="90" frameborder="0" src="./Big O cheat sheet_files/ads.html" marginwidth="0"
+              marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true"
+              data-google-container-id="a!1" data-google-query-id="CNSs4_L2hfMCFeLCcwEd_MoO4Q"
+              data-load-complete="true"></iframe></ins></ins></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+
+    <div class="sharethis-inline-share-buttons st-center st-has-labels  st-inline-share-buttons st-animated" id="st-1">
+      <div class="st-total ">
+        <span class="st-label">91.7k</span>
+        <span class="st-shares">
+          Shares
+        </span>
+      </div>
+      <div class="st-btn st-first" data-network="twitter" style="display: inline-block;">
+        <img alt="twitter sharing button" src="./Big O cheat sheet_files/twitter.svg">
+        <span class="st-label">Tweet</span>
+      </div>
+      <div class="st-btn" data-network="reddit" style="display: inline-block;">
+        <img alt="reddit sharing button" src="./Big O cheat sheet_files/reddit.svg">
+        <span class="st-label">Share</span>
+      </div>
+      <div class="st-btn" data-network="facebook" style="display: inline-block;">
+        <img alt="facebook sharing button" src="./Big O cheat sheet_files/facebook.svg">
+        <span class="st-label">Share</span>
+      </div>
+      <div class="st-btn st-last" data-network="linkedin" style="display: inline-block;">
+        <img alt="linkedin sharing button" src="./Big O cheat sheet_files/linkedin.svg">
+        <span class="st-label">Share</span>
+      </div>
+    </div>
+
+    <h1>Know Thy Complexities!</h1>
+    <p>
+      Hi there!&nbsp; This webpage covers the space and time Big-O complexities of common algorithms used in Computer
+      Science.&nbsp; When preparing for technical interviews in the past, I found myself spending hours crawling the
+      internet putting together the best, average, and worst case complexities for search and sorting algorithms so that
+      I wouldn't be stumped when asked about them.&nbsp; Over the last few years, I've interviewed at several Silicon
+      Valley startups, and also some bigger companies, like Google, Facebook, Yahoo, LinkedIn, and Uber, and each time
+      that I prepared for an interview, I thought to myself "Why hasn't someone created a nice Big-O cheat
+      sheet?".&nbsp; So, to save all of you fine folks a ton of time, I went ahead and created one.&nbsp; Enjoy! - <a
+        href="https://twitter.com/ericdrowell">Eric</a>
+    </p>
+    <p class="promo">
+
+      <a href="https://www.elgrapho.com/" target="_blank">Check out El Grapho, a graph data visualization library that
+        supports millions of nodes and edges</a>
+
+
+    </p>
+
+
+    <h2 id="chartTitle">Big-O Complexity Chart</h2>
+    <!-- for webpage scrapers
+        <img id="chart" src="img/big-o-complexity-chart.png" />
+        -->
+
+    <div>
+      <table id="legend" class="table">
+        <tbody>
+          <tr>
+            <td><code class="red">Horrible</code></td>
+            <td><code class="orange">Bad</code></td>
+            <td><code class="yellow">Fair</code></td>
+            <td><code class="yellow-green">Good</code></td>
+            <td><code class="green">Excellent</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <svg id="chart" width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+        <!-- horrible region -->
+        <path d="M50 450 L 50 0 L 800 0 L 800 450 Z" fill="#ff8989"></path>
+        <!-- bad region -->
+        <path d="M50 450 L 800 0 L 800 450 Z" fill="#FFC543"></path>
+        <!-- fair region -->
+        <path d="M50 450 L 800 450 L 800 330 Z" fill="yellow"></path>
+        <!-- good region -->
+        <path d="M50 450 L 800 450 L 800 410 Z" fill="#C8EA00"></path>
+        <!-- excellent region -->
+        <path d="M50 450 L 800 450 L 800 440 Z" fill="#53d000"></path>
+
+        <!-- axes -->
+        <path d="M50 0 L 50 450 L 800 450" fill="transparent" stroke="black" stroke-width="2"></path>
+
+        <path d="M50 448 L 800 448" fill="transparent" stroke="black" stroke-width="2"></path>
+        <text x="700" y="438" fill="black">O(log n), O(1)</text>
+
+        <path d="M50 450 L 800 400" fill="transparent" stroke="black" stroke-width="2"></path>
+        <text x="760" y="390" fill="black">O(n)</text>
+
+        <path d="M50 450 Q 400 350, 800 150" fill="transparent" stroke="black" stroke-width="2"></path>
+        <text x="630" y="190" fill="black">O(n log n)</text>
+
+        <path d="M50 450 Q 180 380, 250 0" fill="transparent" stroke="black" stroke-width="2"></path>
+        <text x="260" y="30" fill="black">O(n^2)</text>
+
+        <path d="M50 450 C 100 430, 120 350, 120 0" fill="transparent" stroke="black" stroke-width="2"></path>
+        <text x="125" y="20" fill="black">O(2^n)</text>
+
+        <path d="M50 450 C 80 450, 80 350, 80 0" fill="transparent" stroke="black" stroke-width="2"></path>
+        <text x="80" y="20" fill="black">O(n!)</text>
+
+        <text x="0" y="0" transform="translate(30 230) rotate(-90)"
+          style="dominant-baseline: middle; text-anchor: middle; font-size:20px; color: #555; font-size:20px; color: #555; font-style: italic;"
+          fill="black">Operations</text>
+        <text x="0" y="0" transform="translate(420 470)"
+          style="dominant-baseline: middle; text-anchor: middle; font-size:20px; color: #555; font-style: italic;"
+          fill="black">Elements</text>
+      </svg>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div class="google-ad flip">
+      <script async="" src="./Big O cheat sheet_files/f(8).txt"></script>
+      <!-- BigO Middle -->
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-8154832549041429" data-ad-slot="4018097420" data-adsbygoogle-status="done"
+        data-ad-status="filled"><ins id="aswift_1_expand"
+          style="border: none; height: 90px; width: 728px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"
+          tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_1_anchor"
+            style="border: none; height: 90px; width: 728px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"><iframe
+              id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0;width:728px;height:90px;"
+              sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+              width="728" height="90" frameborder="0" src="./Big O cheat sheet_files/ads(1).html" marginwidth="0"
+              marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true"
+              data-google-container-id="a!2" data-google-query-id="CJ3u_vL2hfMCFbOUpwodXuUAUA"
+              data-load-complete="true"></iframe></ins></ins></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <div id="tablesWrapper">
+      <h2 id="data-structures">Common Data Structure Operations</h2>
+      <table class="table table-bordered table-striped">
+
+        <tbody>
+          <tr>
+            <th>Data Structure</th>
+            <th colspan="8">Time Complexity</th>
+            <th>Space Complexity</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th colspan="4">Average</th>
+            <th colspan="4">Worst</th>
+            <th>Worst</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Access</th>
+            <th>Search</th>
+            <th>Insertion</th>
+            <th>Deletion</th>
+            <th>Access</th>
+            <th>Search</th>
+            <th>Insertion</th>
+            <th>Deletion</th>
+            <th></th>
+          </tr>
+
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Array_data_structure">Array</a></td>
+            <td><code class="green">Θ(1)</code></td>
+            <td><code class="yellow">Θ(n)</code></td>
+            <td><code class="yellow">Θ(n)</code></td>
+            <td><code class="yellow">Θ(n)</code></td>
+            <td><code class="green">O(1)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stack</a></td>
+            <td><code class="yellow">Θ(n)</code></td>
+            <td><code class="yellow">Θ(n)</code></td>
+            <td><code class="green">Θ(1)</code></td>
+            <td><code class="green">Θ(1)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="green">O(1)</code></td>
+            <td><code class="green">O(1)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Queue_(abstract_data_type)">Queue</a></td>
+            <td><code class="yellow">Θ(n)</code></td>
+            <td><code class="yellow">Θ(n)</code></td>
+            <td><code class="green">Θ(1)</code></td>
+            <td><code class="green">Θ(1)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="green">O(1)</code></td>
+            <td><code class="green">O(1)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Singly_linked_list#Singly_linked_lists">Singly-Linked List</a>
+            </td>
+            <td><code class="yellow">Θ(n)</code></td>
+            <td><code class="yellow">Θ(n)</code></td>
+            <td><code class="green">Θ(1)</code></td>
+            <td><code class="green">Θ(1)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="green">O(1)</code></td>
+            <td><code class="green">O(1)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Doubly_linked_list">Doubly-Linked List</a></td>
+            <td><code class="yellow">Θ(n)</code></td>
+            <td><code class="yellow">Θ(n)</code></td>
+            <td><code class="green">Θ(1)</code></td>
+            <td><code class="green">Θ(1)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="green">O(1)</code></td>
+            <td><code class="green">O(1)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Skip_list">Skip List</a></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="orange">O(n log(n))</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Hash_table">Hash Table</a></td>
+            <td><code class="gray">N/A</code></td>
+            <td><code class="green">Θ(1)</code></td>
+            <td><code class="green">Θ(1)</code></td>
+            <td><code class="green">Θ(1)</code></td>
+            <td><code class="gray">N/A</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Binary_search_tree">Binary Search Tree</a></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="https://en.wikipedia.org/wiki/Cartesian_tree">Cartesian Tree</a></td>
+            <td><code class="gray">N/A</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="gray">N/A</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/B_tree">B-Tree</a></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Red-black_tree">Red-Black Tree</a></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="https://en.wikipedia.org/wiki/Splay_tree">Splay Tree</a></td>
+            <td><code class="gray">N/A</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="gray">N/A</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/AVL_tree">AVL Tree</a></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/K-d_tree">KD Tree</a></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow-green">Θ(log(n))</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <h2 id="sorting">Array Sorting Algorithms</h2>
+      <table class="table table-bordered table-striped">
+        <tbody>
+          <tr>
+            <th>Algorithm</th>
+            <th colspan="3">Time Complexity</th>
+            <th>Space Complexity</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Best</th>
+            <th>Average</th>
+            <th>Worst</th>
+            <th>Worst</th>
+          </tr>
+
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Quicksort">Quicksort</a></td>
+            <td><code class="orange">Ω(n log(n))</code></td>
+            <td><code class="orange">Θ(n log(n))</code></td>
+            <td><code class="red">O(n^2)</code></td>
+            <td><code class="yellow-green">O(log(n))</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Merge_sort">Mergesort</a></td>
+            <td><code class="orange">Ω(n log(n))</code></td>
+            <td><code class="orange">Θ(n log(n))</code></td>
+            <td><code class="orange">O(n log(n))</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Timsort">Timsort</a></td>
+            <td><code class="yellow">Ω(n)</code></td>
+            <td><code class="orange">Θ(n log(n))</code></td>
+            <td><code class="orange">O(n log(n))</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Heapsort">Heapsort</a></td>
+            <td><code class="orange">Ω(n log(n))</code></td>
+            <td><code class="orange">Θ(n log(n))</code></td>
+            <td><code class="orange">O(n log(n))</code></td>
+            <td><code class="green">O(1)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Bubble_sort">Bubble Sort</a></td>
+            <td><code class="yellow">Ω(n)</code></td>
+            <td><code class="red">Θ(n^2)</code></td>
+            <td><code class="red">O(n^2)</code></td>
+            <td><code class="green">O(1)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a></td>
+            <td><code class="yellow">Ω(n)</code></td>
+            <td><code class="red">Θ(n^2)</code></td>
+            <td><code class="red">O(n^2)</code></td>
+            <td><code class="green">O(1)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Selection_sort">Selection Sort</a></td>
+            <td><code class="red">Ω(n^2)</code></td>
+            <td><code class="red">Θ(n^2)</code></td>
+            <td><code class="red">O(n^2)</code></td>
+            <td><code class="green">O(1)</code></td>
+          </tr>
+          <tr>
+            <td><a href="https://en.wikipedia.org/wiki/Tree_sort">Tree Sort</a></td>
+            <td><code class="orange">Ω(n log(n))</code></td>
+            <td><code class="orange">Θ(n log(n))</code></td>
+            <td><code class="red">O(n^2)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a href="http://en.wikipedia.org/wiki/Shellsort">Shell Sort</a></td>
+            <td><code class="orange">Ω(n log(n))</code></td>
+            <td><code class="red">Θ(n(log(n))^2)</code></td>
+            <td><code class="red">O(n(log(n))^2)</code></td>
+            <td><code class="green">O(1)</code></td>
+          </tr>
+          <tr>
+            <td><a rel="tooltip" title="Only for integers. k is a number of buckets"
+                href="http://en.wikipedia.org/wiki/Bucket_sort">Bucket Sort</a></td>
+            <td><code class="green">Ω(n+k)</code></td>
+            <td><code class="green">Θ(n+k)</code></td>
+            <td><code class="red">O(n^2)</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+            <td><a rel="tooltip" title="Constant number of digits &#39;k&#39;"
+                href="http://en.wikipedia.org/wiki/Radix_sort">Radix Sort</a></td>
+            <td><code class="green">Ω(nk)</code></td>
+            <td><code class="green">Θ(nk)</code></td>
+            <td><code class="green">O(nk)</code></td>
+            <td><code class="yellow">O(n+k)</code></td>
+          </tr>
+          <tr>
+            <td><a rel="tooltip" title="Difference between maximum and minimum number &#39;k&#39;"
+                href="https://en.wikipedia.org/wiki/Counting_sort">Counting Sort</a></td>
+            <td><code class="green">Ω(n+k)</code></td>
+            <td><code class="green">Θ(n+k)</code></td>
+            <td><code class="green">O(n+k)</code></td>
+            <td><code class="yellow">O(k)</code></td>
+          </tr>
+          <tr>
+            <td><a href="https://en.wikipedia.org/wiki/Cubesort">Cubesort</a></td>
+            <td><code class="yellow">Ω(n)</code></td>
+            <td><code class="orange">Θ(n log(n))</code></td>
+            <td><code class="orange">O(n log(n))</code></td>
+            <td><code class="yellow">O(n)</code></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Learn More</h2>
+    <ul id="reading">
+      <!--
+        <li>
+          <a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=as_li_ss_il?s=books&ie=UTF8&qid=1468126491&sr=1-1&keywords=Cracking+the+Coding+Interview&linkCode=li3&tag=htcatu-20&linkId=9e07db13fb21ee43ceb0cf77fdd1d259" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=0984782850&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=htcatu-20" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=htcatu-20&l=li3&o=1&a=0984782850" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+        </li>
+        <li>
+          <a href="https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=as_li_ss_il?s=books&ie=UTF8&qid=1468126728&sr=1-1&keywords=introduction+to+algorithms&linkCode=li3&tag=htcatu-20&linkId=1668feb205fe177099a0196b65392e29" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=0262033844&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=htcatu-20" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=htcatu-20&l=li3&o=1&a=0262033844" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+        </li>
+        <li>
+          <a href="https://www.amazon.com/Data-Structures-Algorithms-Java-2nd/dp/0672324539/ref=as_li_ss_il?s=books&ie=UTF8&qid=1468126773&sr=1-2&keywords=Data+Structures+and+Algorithms+in+Java&linkCode=li3&tag=htcatu-20&linkId=a03f3e589ac05f88d04f2bb1f243929d" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=0672324539&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=htcatu-20" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=htcatu-20&l=li3&o=1&a=0672324539" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+        </li>
+        <li>
+          <a href="https://www.amazon.com/Performance-JavaScript-Faster-Application-Interfaces/dp/059680279X/ref=as_li_ss_il?s=books&ie=UTF8&qid=1468126866&sr=1-1&keywords=High+Performance+JavaScript&linkCode=li3&tag=htcatu-20&linkId=d6079793a89b0971778f2c19d8158474" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=059680279X&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=htcatu-20" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=htcatu-20&l=li3&o=1&a=059680279X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+        </li>
+      -->
+
+      <!--
+        <li><a href="http://www.amazon.com/gp/product/098478280X/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=098478280X&linkCode=as2&tag=htcatu-20&linkId=B6WXIEKJHEBBWJ7B">Cracking the Coding Interview: 150 Programming Questions and Solutions</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=htcatu-20&l=as2&o=1&a=098478280X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+        <li><a href="http://www.amazon.com/gp/product/0262033844/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0262033844&linkCode=as2&tag=htcatu-20&linkId=J2PHCTWEAND3YQF4">Introduction to Algorithms, 3rd Edition</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=htcatu-20&l=as2&o=1&a=0262033844" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+        <li><a href="http://www.amazon.com/gp/product/0672324539/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0672324539&linkCode=as2&tag=htcatu-20&linkId=Y4KPAZH5PFHYXMBA">Data Structures and Algorithms in Java (2nd Edition)</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=htcatu-20&l=as2&o=1&a=0672324539" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+        <li><a href="http://www.amazon.com/gp/product/059680279X/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=059680279X&linkCode=as2&tag=htcatu-20&linkId=WUNMGD5EARDJZKTT">High Performance JavaScript (Build Faster Web Application Interfaces)</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=htcatu-20&l=as2&o=1&a=059680279X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+        -->
+
+      <li><a
+          href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X/ref=as_li_ss_tl?ie=UTF8&amp;redirect=true&amp;ref_=as_li_tl&amp;linkCode=ll1&amp;tag=bigocheatsheet-1-20&amp;linkId=52f670296578886d22cacce6c054edff"
+          target="_blank">Cracking the Coding Interview: 150 Programming Questions and Solutions</a></li>
+      <li><a
+          href="https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=as_li_ss_tl?ie=UTF8&amp;redirect=true&amp;ref_=as_li_tl&amp;linkCode=ll1&amp;tag=bigocheatsheet-1-20&amp;linkId=105e776075c7c7a38c9b0581586d1fa5"
+          target="_blank">Introduction to Algorithms, 3rd Edition</a></li>
+      <li><a
+          href="https://www.amazon.com/Data-Structures-Algorithms-Java-2nd/dp/0672324539/ref=as_li_ss_tl?ie=UTF8&amp;redirect=true&amp;ref_=as_li_tl&amp;linkCode=ll1&amp;tag=bigocheatsheet-1-20&amp;linkId=2b0ec7f4eca859cce10f98824db5a73d"
+          target="_blank">Data Structures and Algorithms in Java (2nd Edition)</a></li>
+      <li><a
+          href="https://www.amazon.com/Performance-JavaScript-Faster-Application-Interfaces/dp/059680279X/ref=as_li_ss_tl?ie=UTF8&amp;redirect=true&amp;ref_=as_li_tl&amp;linkCode=ll1&amp;tag=bigocheatsheet-1-20&amp;linkId=fbbcd88ba96f0e3341687c8170e31cc2"
+          target="_blank">High Performance JavaScript (Build Faster Web Application Interfaces)</a></li>
+    </ul>
+
+    <h2>Get the Official Big-O Cheat Sheet Poster</h2>
+    <a id="poster"
+      href="http://www.redbubble.com/people/immortalloom/works/22929408-official-big-o-cheat-sheet-poster?p=poster&amp;finish=semi_gloss&amp;size=large"
+      target="_blank" title="Big-O Cheat Sheet Poster"><img src="./Big O cheat sheet_files/big-o-cheat-sheet-poster.png"
+        width="600"></a>
+
+    <h2>Contributors</h2>
+    <ol id="contributers">
+      <li><a href="https://github.com/ericdrowell">Eric Rowell</a></li>
+      <li><a href="https://github.com/qpleple">Quentin Pleple</a></li>
+      <li><a href="https://github.com/vault">Michael Abed</a></li>
+      <li><a href="https://github.com/ndizazzo">Nick Dizazzo</a></li>
+      <li><a href="https://github.com/agfor">Adam Forsyth</a></li>
+      <li><a href="https://github.com/felixzhuologist">Felix Zhu</a></li>
+      <li><a href="https://github.com/jay754">Jay Engineer</a></li>
+      <li><a href="https://github.com/jdavis">Josh Davis</a></li>
+      <li><a href="https://github.com/nodirt">Nodir Turakulov</a></li>
+      <li><a href="https://github.com/jhamon">Jennifer Hamon</a></li>
+      <li><a href="https://github.com/d3dave">David Dorfman</a></li>
+      <li><a href="https://github.com/BartMassey">Bart Massey</a></li>
+      <li><a href="https://github.com/raypereda">Ray Pereda</a></li>
+      <li><a href="https://github.com/phamtrisi">Si Pham</a></li>
+      <li><a href="https://github.com/dodgymike">Mike Davis</a></li>
+      <li><a href="https://github.com/mcverry">mcverry</a></li>
+      <li><a href="https://github.com/mhoffman">Max Hoffmann</a></li>
+      <li><a href="https://github.com/BahadorSaket">Bahador Saket</a></li>
+      <li><a href="https://github.com/allolex">Damon Davison</a></li>
+      <li><a href="https://github.com/alvinwan">Alvin Wan</a></li>
+      <li><a href="https://github.com/alanbriolat">Alan Briolat</a></li>
+      <li><a href="https://github.com/drewhannay">Drew Hannay</a></li>
+      <li><a href="https://github.com/andyras">Andrew Rasmussen</a></li>
+      <li><a href="https://github.com/DennisTT">Dennis Tsang</a></li>
+      <li><a href="https://github.com/vmagro">Vinnie Magro</a></li>
+      <li><a href="https://github.com/adam-arold">Adam Arold</a></li>
+      <li><a href="https://github.com/j4n0">Alejandro Ramirez</a></li>
+      <li><a href="https://github.com/WanderingStar">Aneel Nazareth</a></li>
+      <li><a href="https://github.com/rahulc93">Rahul Chowdhury</a></li>
+      <li><a href="https://github.com/jonathanmcelroy">Jonathan McElroy</a></li>
+      <li><a href="https://github.com/steven41292">steven41292</a></li>
+      <li><a href="https://github.com/bamos">Brandon Amos</a></li>
+      <li><a href="https://github.com/jfriedly">Joel Friedly</a></li>
+      <li><a href="https://github.com/caspervg">Casper Van Gheluwe</a></li>
+      <li><a href="https://github.com/elefevre">Eric Lefevre-Ardant</a></li>
+      <li><a href="https://github.com/cristaloleg">Oleg</a></li>
+      <li><a href="https://github.com/renfredxh">Renfred Harper</a></li>
+      <li><a href="https://github.com/piperchester">Piper Chester</a></li>
+      <li><a href="https://github.com/mamigot">Miguel Amigot</a></li>
+      <li><a href="https://github.com/paxocap">Apurva K</a></li>
+      <li><a href="https://github.com/mdaronco">Matthew Daronco</a></li>
+      <li><a href="https://github.com/yunchenglin">Yun-Cheng Lin</a></li>
+      <li><a href="https://github.com/TylerNakamura">Clay Tyler</a></li>
+      <li><a href="https://github.com/ocozalp">Orhan Can Ozalp</a></li>
+      <li><a href="https://github.com/aymanim">Ayman Singh</a></li>
+      <li><a href="https://github.com/damorton">David Morton</a></li>
+      <li><a href="https://github.com/aureooms">Aurelien Ooms</a></li>
+      <li><a href="https://github.com/Eckankar">Sebastian Paaske Torholm</a></li>
+      <li><a href="https://github.com/koek67">Koushik Krishnan</a></li>
+      <li><a href="https://github.com/makosblade">Drew Bailey</a></li>
+      <li><a href="https://github.com/sharpobject">Robert Burke</a></li>
+    </ol>
+
+    <h2>Make this Page Better</h2>
+    <a href="https://github.com/ericdrowell/BigOCheatSheet/blob/master/Tables.html">Edit these tables!</a>
+
+    <div class="google-ad">
+      <script async="" src="./Big O cheat sheet_files/f(8).txt"></script>
+      <!-- BigOBottom -->
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-8154832549041429" data-ad-slot="8454970220" data-adsbygoogle-status="done"
+        data-ad-status="filled"><ins id="aswift_2_expand"
+          style="border: none; height: 90px; width: 728px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"
+          tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_2_anchor"
+            style="border: none; height: 90px; width: 728px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"><iframe
+              id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0;width:728px;height:90px;"
+              sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+              width="728" height="90" frameborder="0" src="./Big O cheat sheet_files/ads(2).html" marginwidth="0"
+              marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true"
+              data-google-container-id="a!3" data-google-query-id="CM-Z__L2hfMCFcIUYgod_NcPXg"
+              data-load-complete="true"></iframe></ins></ins></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+  </div>
+
+  <div id="disqusWrapper">
+    <div id="disqus_thread"><iframe id="dsq-app2819" name="dsq-app2819" allowtransparency="true" frameborder="0"
+        scrolling="no" tabindex="0" title="Disqus" sandbox="allow-forms allow-popups allow-same-origin allow-scripts"
+        width="100%"
+        style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 616px !important;"
+        src="./Big O cheat sheet_files/saved_resource(1).html"></iframe><iframe id="dsq-app2816" name="dsq-app2816"
+        allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%"
+        src="./Big O cheat sheet_files/saved_resource(2).html"
+        style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 7145px !important;"
+        horizontalscrolling="no" verticalscrolling="no"></iframe><iframe id="dsq-app2821" name="dsq-app2821"
+        allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus"
+        sandbox="allow-forms allow-popups allow-same-origin allow-scripts" width="100%"
+        style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 617px !important;"
+        src="./Big O cheat sheet_files/saved_resource(3).html"></iframe></div>
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'bigocheatsheet';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function () {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+        powered by Disqus.</a></noscript>
+  </div>
+
+  <script type="text/javascript" src="./Big O cheat sheet_files/sharethis.js"></script>
+
+
+  <script>
+    // setTimeout(function() {
+    //   document.getElementById('shareButtons').style.opacity = 1;
+    // }, 300);
+
+    function isVisible(el) {
+      var elemTop = el.getBoundingClientRect().top,
+        elemBottom = el.getBoundingClientRect().bottom;
+
+      return (elemTop >= 0) && (elemBottom <= window.innerHeight);
+    }
+
+    // periodically check if we should flip or unflip and ad
+    var interval = setInterval(function () {
+      var ads = document.getElementsByClassName('google-ad'),
+        len = ads.length,
+        n, ad;
+
+      for (n = 0; n < len; n++) {
+        ad = ads[n];
+        if (ad.className === 'google-ad' && isVisible(ad)) {
+          ad.className = 'google-ad flip';
+        }
+        if (ad.className === 'google-ad flip' && !isVisible(ad)) {
+          ad.className = 'google-ad';
+        }
+      };
+    }, 2000);
+  </script>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-10955171-12']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+  <ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;"
+    data-ad-status="unfilled"><ins id="aswift_3_expand"
+      style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"
+      tabindex="0" title="Advertisement" aria-label="Advertisement"><ins id="aswift_3_anchor"
+        style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"><iframe
+          id="aswift_3" name="aswift_3"
+          style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;"
+          sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+          frameborder="0" src="./Big O cheat sheet_files/ads(3).html" marginwidth="0" marginheight="0" vspace="0"
+          hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!4"
+          data-load-complete="true"></iframe></ins></ins></ins>
+  <div id="new-tab-sidebar" class="hidden">
+    <div class="wrap"> <img class="new-tab-logo"
+        src="chrome-extension://meffljleomgifbbcffejnmhjagncfpbd/img/128x128.png">
+      <ul></ul>
+    </div>
+  </div><iframe style="display: none;" src="./Big O cheat sheet_files/saved_resource(4).html"></iframe><iframe
+    id="google_osd_static_frame_6056598008920" name="google_osd_static_frame"
+    style="display: none; width: 0px; height: 0px;"
+    src="./Big O cheat sheet_files/saved_resource(5).html"></iframe><iframe
+    style="width: 0px; height: 0px; visibility: hidden; display: none;"
+    src="./Big O cheat sheet_files/saved_resource(6).html"></iframe>
+  <div class="_cm-communication-input" data-unit-info=""></div><iframe src="./Big O cheat sheet_files/aframe.html"
+    width="0" height="0" style="display: none;"></iframe>
+</body><iframe id="google_esf" name="google_esf" src="./Big O cheat sheet_files/zrt_lookup.html"
+  style="display: none;"></iframe>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>
