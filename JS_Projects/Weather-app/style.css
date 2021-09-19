@@ -60,21 +60,36 @@ input.search-bar{
 }
 
 .city{
-    text-align: center;
     font-size:1.5em;
+    text-transform: capitalize;
 }
 
 
 .temp{
     margin:0;
     margin-bottom: 0.5em;
-    font-size:5em;
+    font-size:2.5em;
 }
 
 .description{
     text-transform: capitalize;
     margin-left: 8px;
     font-size: 1em;
+}
+
+.weather.loading{
+    visibility: hidden;
+    max-height: 20px;
+    position:relative;
+}
+
+.weather.loading:after{
+    visibility: visible;
+    content: 'loading..';
+    color: #fff;
+    position: absolute;
+    top:0;
+    left:20px;
 }
 
 .flex{
