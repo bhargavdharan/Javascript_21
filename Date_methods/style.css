@@ -1,0 +1,12 @@
+body{
+    background: pink;
+}
+
+.container {
+    /* position: absolute; */
+    margin: auto;
+    /* top:25%; */
+    background-color: aquamarine;
+    height: 50vh;
+    width: 50%;
+}

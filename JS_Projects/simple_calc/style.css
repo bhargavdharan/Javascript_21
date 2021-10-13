@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
+
+body{
+    font-family: 'Festive',cursive;
+    height: 100vh;
+    background-color: #ff9966;
+    background-color: -webkit-linear-gradient(to right,#ff5e62,#ff9966);
+    background-color: linear-gradient(to right,#ff5e62,#ff9966);
+    text-align: center;
+}
+
+.calculator{
+    display: inline-block;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+input, button{
+    border: none;
+    outline: none;
+    height: 50px;
+}
+
+input{
+    width: 321px;
+    font-size: 30px;
+    margin-bottom: -1px;
+    background-color: #333a4d;
+    color:#eeeeee;
+}
+
+button{
+    margin: -1px;
+    font-family: 'Festive',cursive;
+    font-weight: 600;
+    font-size: 2rem;
+    background-color: #eeeeee;
+    width:80px;
+    color: #333a4d;
+}
+
+button:active{
+    background-color: #333A4D;
+    color:#eeeeee;
+}
